@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tetra Pak | Portal B2B</title>
+<style>
+:root{--azul:#0050a4;--azul2:#003b78;--celeste:#eaf5fb;--texto:#26394b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fb;color:var(--texto)}
+header{background:linear-gradient(115deg,var(--azul2),var(--azul));color:#fff;padding:22px max(5%,calc((100% - 1180px)/2));display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:27px;letter-spacing:.5px}.logo span{color:#9ee8ff}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
+.hero{padding:54px 5%;background:linear-gradient(100deg,#e2f3fb,#fff);text-align:center}.hero h1{color:var(--azul2);font-size:clamp(30px,5vw,46px);margin:0 0 12px}.hero p{max-width:820px;margin:auto;line-height:1.65}
+main{max-width:1180px;margin:35px auto;padding:0 20px}.section{margin:0 0 52px}.section h2{color:var(--azul2);font-size:29px;margin:0 0 10px}.lead{color:#536a7d;line-height:1.65;margin:0 0 23px}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:17px}.panel{background:#fff;border-radius:13px;padding:22px;box-shadow:0 4px 16px #001d3810}.panel h3{color:var(--azul);margin:0 0 10px}.panel p{line-height:1.6;margin:0;color:#506477}
+.company-banner{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch;margin-bottom:18px}.company-banner .panel{padding:26px}.company-banner img{width:100%;height:100%;min-height:220px;object-fit:cover;border-radius:13px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}.filters button,.btn{border:0;border-radius:8px;padding:11px 15px;background:var(--azul);color:white;font-weight:bold;cursor:pointer}.filters button{background:#dcebf5;color:var(--azul2)}.filters button.active{background:var(--azul);color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:19px}.card{background:#fff;border-radius:13px;overflow:hidden;box-shadow:0 4px 15px #001d3810;display:flex;flex-direction:column;transition:.2s}.card:hover{transform:translateY(-4px)}.card img{width:100%;height:205px;object-fit:contain;background:#edf4f8;padding:9px}.card-body{padding:17px;display:flex;flex-direction:column;flex:1}.tag{font-size:11px;font-weight:bold;letter-spacing:.7px;text-transform:uppercase;color:#0085b7}.card h3{font-size:18px;color:var(--azul);margin:8px 0}.card p{font-size:14px;line-height:1.5;color:#536a7d;flex:1}.card button{margin-top:9px}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}label{font-size:13px;font-weight:bold;color:#41566c}input,select,textarea{display:block;width:100%;padding:12px;border:1px solid #cbd8e3;border-radius:7px;margin-top:6px;font:inherit;background:#fff}textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}.cart-list{padding-left:20px;line-height:2}.notice{background:#e8f5fc;border-left:4px solid #00a6d6;padding:14px;border-radius:6px;font-size:13px;line-height:1.55;margin-top:18px}#status,#trackingResult{font-weight:bold;color:var(--azul2);line-height:1.5}
+footer{background:#062f5d;color:#dceaf5;text-align:center;padding:25px;font-size:13px;margin-top:45px}
+@media(max-width:700px){.company-banner{grid-template-columns:1fr}header{justify-content:center}nav{justify-content:center}}
+
+/* Apartados añadidos: seguimiento del cliente y vista interna de empresa */
+.internal-panel{border:2px solid #c8dbea;background:#fafdff}
+.internal-panel .private-label{display:inline-block;background:#e4f1fa;color:#00457f;border-radius:20px;padding:5px 10px;font-size:11px;font-weight:bold;margin-bottom:10px}
+.status-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.status-step{padding:12px 8px;border-radius:8px;background:#edf1f4;color:#607080;text-align:center;font-size:12px;font-weight:bold}
+.status-step.done{background:#dff3e8;color:#17643a}.status-step.current{background:#dcebf8;color:#00457f;border:1px solid #78b4df}
+.admin-record{border:1px solid #d7e2eb;border-radius:9px;padding:14px;margin:12px 0;background:#fff;line-height:1.55}
+.admin-record h4{margin:0 0 8px;color:#0050a4}
+@media(max-width:600px){.status-steps{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">TETRA <span>PAK</span> <small style="font-size:12px;font-weight:normal">| Portal B2B demostrativo</small></div>
+ <nav><a href="#empresa">Empresa</a><a href="#catalogo">Productos</a><a href="#cotizaciones">Cotizaciones</a><a href="#panel-empresa">Acceso empresa</a></nav>
+</header>
+
+<section class="hero">
+ <h1>Soluciones para la industria de alimentos y bebidas</h1>
+ <p>Conoce la empresa Tetra Pak, sus soluciones de envases, procesamiento y envasado, y envía una solicitud de cotización para tu negocio.</p>
+</section>
+
+<main>
+<!-- INFORMACIÓN DE LA EMPRESA AL INICIO -->
+<section class="section" id="empresa">
+ <h2>Conoce Tetra Pak</h2>
+ <p class="lead">Información general de la empresa antes de consultar el catálogo de productos.</p>
+ <div class="company-banner">
+  <div class="panel">
+   <h3>¿Quiénes somos?</h3>
+   <p>Tetra Pak es una empresa de origen sueco que desarrolla soluciones de procesamiento y envasado para la industria de alimentos y bebidas. Sus soluciones incluyen envases de cartón, equipos de procesamiento, máquinas llenadoras y servicios para fabricantes de alimentos.</p>
+   <p style="margin-top:12px"><b>Sitio oficial:</b> <a href="https://www.tetrapak.com/es-mx" target="_blank" rel="noopener">Tetra Pak México</a></p>
+  </div>
+  <img src="https://www.pulpapernews.com/sites/default/files/styles/content_media_slider/public/media-cover-images/package-portfolio-blue-ra_0.jpeg?h=61ca0bd2&itok=35-Rbtln" alt="Portafolio de envases de cartón Tetra Pak" loading="lazy">
+ </div>
+ <div class="info-grid">
+  <article class="panel"><h3>Historia</h3><p>Tetra Pak fue fundada en Suecia en 1951. Comenzó con el desarrollo de envases de cartón y con el tiempo amplió su oferta a tecnologías de procesamiento, envasado y servicios para la industria alimentaria.</p></article>
+  <article class="panel"><h3>Misión y propósito</h3><p>Su propósito corporativo se expresa como “proteger lo bueno”: los alimentos, las personas y el planeta. La empresa trabaja en soluciones que contribuyan a la seguridad y disponibilidad de los alimentos.</p></article>
+  <article class="panel"><h3>Visión</h3><p>Impulsar soluciones innovadoras y sostenibles para el procesamiento y envasado de alimentos, ayudando a proteger los productos y a mejorar el desempeño de la industria.</p></article>
+  <article class="panel"><h3>Dirección y contacto</h3><p>Para consultar la dirección vigente de oficinas en México, teléfonos y datos comerciales, utiliza el directorio y los canales de contacto publicados en el sitio oficial de Tetra Pak México.</p><p style="margin-top:10px"><a href="https://www.tetrapak.com/es-mx" target="_blank" rel="noopener">Consultar contacto oficial</a></p></article>
+  <article class="panel"><h3>¿A quién vende?</h3><p>Su mercado es principalmente empresarial (B2B): fabricantes de leche, jugos, bebidas vegetales, alimentos líquidos y otros productos que requieren procesos y envases especializados.</p></article>
+  <article class="panel"><h3>Soluciones principales</h3><p>Envases de cartón, equipos de procesamiento, líneas de llenado y envasado, automatización, distribución dentro de planta y servicios técnicos.</p></article>
+ </div>
+</section>
+
+<!-- CATÁLOGO DESPUÉS DE LA EMPRESA -->
+<section class="section" id="catalogo">
+ <h2>Catálogo de productos y soluciones</h2>
+ <p class="lead">Los nombres corresponden a productos, familias o equipos de la cartera de Tetra Pak. Las fotografías son referencias visuales reales de envases o maquinaria Tetra Pak; algunas ilustran una familia o línea relacionada y no necesariamente el modelo exacto indicado. Los precios mostrados son estimaciones ficticias para esta demostración escolar, no tarifas oficiales.</p>
+ <div class="filters">
+  <button class="active" onclick="filterProducts('Todos',this)">Todos</button>
+  <button onclick="filterProducts('Envases',this)">Envases</button>
+  <button onclick="filterProducts('Procesamiento',this)">Procesamiento</button>
+  <button onclick="filterProducts('Envasado',this)">Envasado</button>
+  <button onclick="filterProducts('Distribución',this)">Distribución</button>
+ </div>
+ <div class="grid" id="products"></div>
+</section>
+
+<!-- COTIZACIONES AL FINAL -->
+<section class="section" id="cotizaciones">
+ <h2>Carrito y solicitud de cotización</h2>
+ <p class="lead">Selecciona los productos del catálogo y completa los datos de tu empresa para preparar una solicitud.</p>
+ <div class="two">
+  <div class="panel">
+   <h3>Productos seleccionados</h3>
+   <ul id="cart" class="cart-list"><li>No has agregado productos.</li></ul>
+   <button class="btn" type="button" onclick="clearCart()">Vaciar selección</button>
+  </div>
+  <div class="panel">
+   <h3>Datos del comprador y entrega</h3>
+   <form id="quoteForm">
+    <label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label>
+    <label>Nombre del comprador<input name="comprador" required></label>
+    <label>Correo electrónico<input name="correo" type="email" required></label>
+    <label>Teléfono<input name="telefono" type="tel"></label>
+    <label>Dirección de entrega<input name="direccion" required></label>
+    <label>Ciudad y estado<input name="ciudad" required></label>
+    <label>Forma de pago<select name="pago"><option>Por definir con el área comercial</option><option>Transferencia bancaria (sujeta a cotización)</option><option>Otra / por acordar</option></select></label>
+    <label>Fecha deseada de entrega<input name="fecha" type="date"></label>
+    <label class="full">Cantidades y requerimientos<textarea name="comentarios" placeholder="Indica cantidades aproximadas, tipo de producto, capacidad o necesidades técnicas."></textarea></label>
+    <button class="btn full" type="submit">Generar solicitud de cotización</button>
+   </form>
+   <p id="status" aria-live="polite"></p>
+  </div>
+ </div>
+ <div class="two" style="margin-top:18px">
+  <div class="panel">
+   <h3>Seguimiento de solicitud</h3>
+   <form onsubmit="trackQuote(event)">
+    <label>Folio de cotización<input id="folio" required placeholder="Ej. TP-123456"></label>
+    <div style="align-self:end"><button class="btn" type="submit">Consultar folio</button></div>
+   </form>
+   <p id="trackingResult" aria-live="polite"></p>
+  </div>
+  <div class="panel">
+   <h3>¿Cómo funciona?</h3>
+   <p>1. Agrega los productos que te interesan. 2. Completa los datos de tu empresa y entrega. 3. Genera la solicitud y guarda el folio. 4. En una operación real, el equipo comercial revisaría los requerimientos y prepararía una cotización.</p>
+  </div>
+ </div>
+ <p class="notice">Aviso importante: este sitio es un prototipo escolar no oficial. El formulario y el seguimiento funcionan únicamente como demostración dentro del navegador; no envían solicitudes a Tetra Pak, no procesan pagos y no confirman compras. Los precios mostrados son únicamente ilustrativos y no oficiales; los precios reales, disponibilidad, condiciones de pago y entregas deben solicitarse directamente a Tetra Pak.</p>
+</section>
+
+<!-- NUEVO: VISTA INTERNA PARA LA EMPRESA -->
+<section class="section" id="panel-empresa">
+ <h2>Panel interno de la empresa</h2>
+ <p class="lead">Este apartado representa la vista interna del personal de la empresa. Aquí se pueden consultar los datos de las empresas compradoras y sus solicitudes, además de actualizar el estado para que el cliente vea el avance al ingresar su folio.</p>
+ <div class="panel internal-panel">
+  <span class="private-label">VISTA INTERNA · EMPRESA</span>
+  <h3>Acceso del personal</h3>
+  <p style="margin-bottom:14px;color:#536a7d;line-height:1.5">Ingresa la clave de demostración para mostrar los datos recibidos en este navegador.</p>
+  <form onsubmit="showCompanyData(event)">
+   <label>Clave de acceso<input id="adminKey" type="password" placeholder="Clave de demostración" required></label>
+   <div style="align-self:end"><button class="btn" type="submit">Entrar al panel</button></div>
+  </form>
+  <p id="adminMessage" aria-live="polite"></p>
+  <div id="companyData" style="display:none;margin-top:18px">
+   <h3>Datos de empresas y solicitudes recibidas</h3>
+   <div id="companyRecords"></div>
+  </div>
+ </div>
+ <p class="notice">Para esta demostración escolar, la clave es <b>TP2026</b>. El personal puede cambiar el estado de cada pedido y guardar el avance. Los datos se guardan únicamente en el navegador donde se generó la solicitud. Una plataforma empresarial real necesita usuarios, contraseñas y una base de datos protegida en un servidor.</p>
+</section>
+
+</main>
+<footer>Portal B2B demostrativo · Proyecto escolar · Tetra Pak es una marca de su respectivo titular.</footer>
+
+<script>
+const fallbackImages=[
+ "https://www.pulpapernews.com/sites/default/files/styles/content_media_slider/public/media-cover-images/package-portfolio-blue-ra_0.jpeg?h=61ca0bd2&itok=35-Rbtln",
+ "https://s7g10.scene7.com/is/image/tetrapak/indirect-uht-unit-customized-to-your-needs?fmt=jpg&hei=410&op_usm=1.75%2C0.3%2C2%2C0&qlt=85%2C0&resMode=sharp2&wid=750",
+ "https://www.tetrapak.com/content/dam/tetrapak/publicweb/cn/zh/innovation-circle/anmuxi-protien-milk-launch-tetra-crown-150ml-tn-04.png",
+ "https://i.machineryhost.com/68a83eeb494a308fe5295da69428a507/adf926696cb8ef036f0dd7874a19b018/original-used-aseptic-carton-filler-tetra-pak-tba-19-10-v-200-ml-slim.JPG",
+ "https://www.yatsuren.jp/library/5ae138d4c73c8b6c15dc8778/5cf7593d1630fd5d6c8698b8.jpg"
+];
+const products=[
+ {name:"Tetra Brik® Aseptic",cat:"Envases",desc:"Envase de cartón aséptico para leche, jugos y otras bebidas de larga vida.",img:fallbackImages[0],price:"Desde $1,800 MXN por millar de envases"},
+ {name:"Tetra Prisma® Aseptic",cat:"Envases",desc:"Formato de envase aséptico utilizado para bebidas y productos líquidos.",img:fallbackImages[0],price:"Desde $2,100 MXN por millar de envases"},
+ {name:"Tetra Rex®",cat:"Envases",desc:"Familia de envases de cartón para productos refrigerados.",img:fallbackImages[0],price:"Desde $2,000 MXN por millar de envases"},
+ {name:"Tetra Fino® Aseptic",cat:"Envases",desc:"Envase de cartón flexible aséptico para alimentos líquidos.",img:fallbackImages[0],price:"Desde $1,650 MXN por millar de envases"},
+ {name:"Tapas y cierres Tetra Pak",cat:"Envases",desc:"Opciones de cierres y tapas diseñadas para distintos formatos de envase.",img:fallbackImages[2],price:"Desde $450 MXN por millar de piezas"},
+ {name:"Unidad de tratamiento UHT",cat:"Procesamiento",desc:"Sistema térmico para procesar productos líquidos a temperatura ultra alta.",img:fallbackImages[1],price:"Desde $2,500,000 MXN por equipo"},
+ {name:"Homogeneizadores Tetra Pak",cat:"Procesamiento",desc:"Equipos para homogeneizar productos y obtener una mezcla uniforme.",img:fallbackImages[2],price:"Desde $850,000 MXN por equipo"},
+ {name:"Equipos de procesamiento para lácteos",cat:"Procesamiento",desc:"Soluciones de proceso para leche y otros productos lácteos.",img:fallbackImages[1],price:"Desde $1,200,000 MXN por sistema"},
+ {name:"Tetra Pak® A3/Flex iLine",cat:"Envasado",desc:"Línea de envasado aséptico para determinados formatos de envase de cartón.",img:fallbackImages[3],price:"Desde $8,000,000 MXN por línea"},
+ {name:"Tetra Pak® E3/Speed FP iLine",cat:"Envasado",desc:"Solución de llenado y envasado de alta velocidad.",img:fallbackImages[4],price:"Desde $12,000,000 MXN por línea"},
+ {name:"Empacadora de envases Tetra Pak® 12",cat:"Distribución",desc:"Equipo de final de línea para agrupar y empacar envases.",img:fallbackImages[3],price:"Desde $1,500,000 MXN por equipo"},
+ {name:"Transportadores y acumuladores",cat:"Distribución",desc:"Equipos para trasladar y acumular envases dentro de la línea de producción.",img:fallbackImages[4],price:"Desde $650,000 MXN por sistema"}
+];
+let cart=[];
+function renderProducts(items=products){
+ const root=document.getElementById("products");root.innerHTML="";
+ items.forEach((p)=>{
+  const card=document.createElement("article");card.className="card";
+  const img=document.createElement("img");img.src=p.img;img.alt=p.name;img.loading="lazy";
+  img.onerror=()=>{let next=Number(img.dataset.fallback||0)+1;img.dataset.fallback=next;if(next<fallbackImages.length){img.src=fallbackImages[next]}else{img.onerror=null;img.alt=p.name+" (imagen no disponible)";img.src=fallbackImages[0]}};
+  const body=document.createElement("div");body.className="card-body";
+  const tag=document.createElement("span");tag.className="tag";tag.textContent=p.cat;
+  const title=document.createElement("h3");title.textContent=p.name;
+  const desc=document.createElement("p");desc.textContent=p.desc;
+  const price=document.createElement("p");price.style.cssText="font-weight:700;color:#003b78;margin:0 0 10px";price.textContent="Precio de referencia: "+p.price;
+  const btn=document.createElement("button");btn.className="btn";btn.textContent="Agregar a cotización";btn.onclick=()=>addCart(p.name);
+  body.append(tag,title,desc,price,btn);card.append(img,body);root.append(card);
+ });
+}
+function filterProducts(cat,button){document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));button.classList.add("active");renderProducts(cat==="Todos"?products:products.filter(p=>p.cat===cat))}
+function addCart(name){cart.push(name);renderCart()}
+function renderCart(){const ul=document.getElementById("cart");ul.innerHTML="";if(!cart.length){ul.innerHTML="<li>No has agregado productos.</li>";return}cart.forEach((name,i)=>{const li=document.createElement("li");li.textContent=name+" ";const b=document.createElement("button");b.className="btn";b.style.padding="4px 8px";b.textContent="Quitar";b.onclick=()=>{cart.splice(i,1);renderCart()};li.append(b);ul.append(li)})}
+function clearCart(){cart=[];renderCart()}
+document.getElementById("quoteForm").addEventListener("submit",e=>{
+ e.preventDefault();if(!cart.length){document.getElementById("status").textContent="Agrega al menos un producto antes de generar la solicitud.";return}
+ const folio="TP-"+Math.floor(100000+Math.random()*900000);
+ const request={datos:Object.fromEntries(new FormData(e.target).entries()),productos:[...cart],estado:"Solicitud recibida",estadoIndex:0};
+ try{localStorage.setItem("tetrapak-demo-"+folio,JSON.stringify(request))}catch(err){}
+ document.getElementById("status").textContent="Solicitud de demostración generada. Tu folio es "+folio+". Ya puedes consultarlo en Seguimiento de solicitud.";
+ document.getElementById("folio").value=folio;
+ cart=[];renderCart();e.target.reset();
+});
+function trackQuote(e){
+ e.preventDefault();
+ const code=document.getElementById("folio").value.trim().toUpperCase();
+ let saved=null;
+ try{saved=localStorage.getItem("tetrapak-demo-"+code)}catch(err){}
+ const target=document.getElementById("trackingResult");
+ target.innerHTML="";
+ if(!saved){target.textContent="No se encontró ese folio. Verifica que lo hayas escrito correctamente y que la solicitud se haya creado en este mismo navegador.";return}
+ const request=JSON.parse(saved);
+ const states=["Solicitud recibida","En revisión por la empresa","Pedido aprobado / en preparación","Enviado","Entregado"];
+ const current=Math.max(0,Math.min(Number(request.estadoIndex)||0,states.length-1));
+ const heading=document.createElement("strong");
+ heading.textContent="Estado actual: "+states[current];
+ target.append(heading);
+ const steps=document.createElement("div");steps.className="status-steps";
+ states.forEach((label,index)=>{
+  const item=document.createElement("div");
+  item.className="status-step"+(index<current?" done":index===current?" current":"");
+  item.textContent=(index<current?"✓ ":"")+(index===current?"● ":"")+label;
+  steps.append(item);
+ });
+ target.append(steps);
+ const note=document.createElement("small");
+ note.textContent="Folio: "+code+". Último estado guardado en esta demostración.";
+ target.append(note);
+}
+
+function showCompanyData(e){
+ e.preventDefault();
+ const key=document.getElementById("adminKey").value;
+ const message=document.getElementById("adminMessage");
+ const wrap=document.getElementById("companyData");
+ if(key!=="TP2026"){message.textContent="Clave incorrecta. Intenta nuevamente.";wrap.style.display="none";return}
+ message.textContent="Acceso de demostración concedido.";
+ wrap.style.display="block";
+ const root=document.getElementById("companyRecords");root.innerHTML="";
+ let count=0;
+ for(let i=0;i<localStorage.length;i++){
+  const storageKey=localStorage.key(i);
+  if(!storageKey || !storageKey.startsWith("tetrapak-demo-")) continue;
+  let request;
+  try{request=JSON.parse(localStorage.getItem(storageKey))}catch(err){continue}
+  count++;
+  const data=request.datos||{};
+  const card=document.createElement("div");card.className="admin-record";
+  const title=document.createElement("h4");title.textContent="Solicitud "+storageKey.replace("tetrapak-demo-","");
+  const details=document.createElement("p");
+  details.innerHTML="<b>Empresa:</b> "+safeText(data.empresa)+"<br><b>Comprador:</b> "+safeText(data.comprador)+"<br><b>Correo:</b> "+safeText(data.correo)+"<br><b>Teléfono:</b> "+safeText(data.telefono)+"<br><b>Dirección de entrega:</b> "+safeText(data.direccion)+"<br><b>Ciudad / estado:</b> "+safeText(data.ciudad)+"<br><b>Forma de pago:</b> "+safeText(data.pago)+"<br><b>Fecha deseada:</b> "+safeText(data.fecha)+"<br><b>Comentarios:</b> "+safeText(data.comentarios)+"<br><b>Productos:</b> "+(request.productos||[]).map(safeText).join(", ")+"<br><b>Estado:</b> "+safeText(request.estado||"Solicitud recibida");
+  const statusLabel=document.createElement("p");statusLabel.style.cssText="font-weight:bold;color:#0050a4;margin:12px 0 8px";statusLabel.textContent="Actualizar seguimiento del pedido:";
+  const statusSelect=document.createElement("select");statusSelect.style.cssText="width:100%;padding:10px;border:1px solid #cbd8e3;border-radius:7px;margin-bottom:8px";
+  const statusOptions=["Solicitud recibida","En revisión por la empresa","Pedido aprobado / en preparación","Enviado","Entregado"];
+  statusOptions.forEach((label,index)=>{const option=document.createElement("option");option.value=String(index);option.textContent=label;statusSelect.append(option)});
+  statusSelect.value=String(Math.max(0,Math.min(Number(request.estadoIndex)||0,statusOptions.length-1)));
+  const updateButton=document.createElement("button");updateButton.type="button";updateButton.className="btn";updateButton.textContent="Guardar avance del pedido";
+  updateButton.onclick=()=>{
+   request.estadoIndex=Number(statusSelect.value);request.estado=statusOptions[request.estadoIndex];
+   try{localStorage.setItem(storageKey,JSON.stringify(request));statusLabel.textContent="Seguimiento actualizado: "+request.estado;details.innerHTML="<b>Empresa:</b> "+safeText(data.empresa)+"<br><b>Comprador:</b> "+safeText(data.comprador)+"<br><b>Correo:</b> "+safeText(data.correo)+"<br><b>Teléfono:</b> "+safeText(data.telefono)+"<br><b>Dirección de entrega:</b> "+safeText(data.direccion)+"<br><b>Ciudad / estado:</b> "+safeText(data.ciudad)+"<br><b>Forma de pago:</b> "+safeText(data.pago)+"<br><b>Fecha deseada:</b> "+safeText(data.fecha)+"<br><b>Comentarios:</b> "+safeText(data.comentarios)+"<br><b>Productos:</b> "+(request.productos||[]).map(safeText).join(", ")+"<br><b>Estado:</b> "+safeText(request.estado)}
+   catch(err){statusLabel.textContent="No se pudo guardar el avance en este navegador."}
+  };
+  card.append(title,details,statusLabel,statusSelect,updateButton);root.append(card);
+ }
+ if(!count)root.textContent="Todavía no hay solicitudes guardadas en este navegador.";
+}
+function safeText(value){
+ return String(value==null||value===""?"No indicado":value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+}
+
+renderProducts();
+</script>
+</body>
+</html>
